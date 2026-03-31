@@ -1,0 +1,7 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 784" width="784"  height="784" >
+  <circle fill="#F2DFD5" cx="380" cy="378" r="374"></circle>
+  <path fill="#F8962B" stroke="#010101" stroke-width="17px" stroke-linejoin="round" stroke-miterlimit="10" d="M 562 615 l -439 -148 l 70 -208 l 439 148 z"></path>
+  <path fill="#8CC749" stroke="#010101" stroke-width="17px" stroke-linejoin="round" stroke-miterlimit="10" d="M 395 194 a 39.0 39.0 0.0 1 0 40 -67 a 39.0 39.0 0.0 1 0 -40 67 z"></path>
+  <path fill="none" stroke="#010101" stroke-width="17px" stroke-linejoin="round" stroke-miterlimit="10" d="M 255 281 l 128 -93 M 563 380 l -130 -193"></path>
+  <path fill="#010101" d="M 269 435 c -6 -2 -11 -5 -15 -10 c -4 -5 -6 -11 -8 -17 c -2 -9 -1 -18 3 -28 c 3 -7 8 -12 14 -16 c 6 -3 12 -6 20 -6 c 8 0 15 2 21 6 c 6 4 11 9 15 18 l -13 9 c -2 -5 -4 -9 -8 -12 c -4 -3 -9 -5 -14 -5 c -4 0 -8 1 -11 3 c -3 2 -6 4 -8 8 c -2 4 -3 8 -4 12 c 0 4 1 8 3 12 c 2 5 5 8 9 10 c 4 2 8 3 13 3 c 2 0 5 -1 7 -2 c 2 -1 5 -2 6 -3 l 7 14 c -3 2 -7 4 -11 5 c -5 1 -10 1 -15 0 c -5 -1 -10 -3 -13 -5 z M 301 446 l 55 -62 l 16 5 l 7 80 l -18 -6 l -2 -17 l -30 -10 l -12 14 l -16 -6 z M 341 424 l 18 6 l -2 -23 l -16 18 z M 387 475 l 24 -72 l 50 17 l -5 15 l -34 -10 l -5 16 l 33 11 l -5 11 l -32 -10 l -10 28 l -17 -5 z M 451 496 l 24 -72 l 52 17 l -5 15 l -35 -12 l -5 16 l 33 10 l -5 14 l -33 -10 l -5 16 l 36 12 l -5 15 l -52 -19 z"></path>
+</svg>

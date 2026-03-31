@@ -1,0 +1,24 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 784" width="784"  height="784" >
+  <g label="Layer 1" groupmode="layer">
+    <path fill="#FCEA1C" stroke="#FCEA1C" stroke-width="23px" stroke-linecap="round" stroke-linejoin="round" d="M 34 11 l 716 0 c 15 0 27 45 27 100 l 0 538 c 0 55 -12 100 -27 100 l -716 0 c -15 0 -27 -45 -27 -100 l 0 -538 c 0 -55 12 -100 27 -100 z"></path>
+    <g aria-label="FIXATIONS" stroke="#FCEA1C">
+      <path d="M 21 404 l 61 0 l 0 57 l -37 0 l 0 46 l 31 0 l 0 54 l -31 0 l 0 109 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 103 404 l 24 0 l 0 269 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 172 532 l -25 -128 l 27 0 l 15 83 l 14 -83 l 27 0 l -25 128 l 27 139 l -27 0 l -16 -87 l -16 87 l -27 0 z" stroke="#FCEA1C"></path>
+      <path d="M 269 404 l 28 0 l 30 269 l -26 0 l -4 -45 l -28 0 l -4 45 l -26 0 z M 292 570 l -9 -96 l -9 96 z" stroke="#FCEA1C"></path>
+      <path d="M 328 404 l 74 0 l 0 66 l -25 0 l 0 202 l -24 0 l 0 -202 l -25 0 z" stroke="#FCEA1C"></path>
+      <path d="M 421 404 l 24 0 l 0 269 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 467 538 q 0 -33 3 -59 q 3 -27 9 -45 q 6 -18 14 -27 q 8 -9 18 -9 q 10 0 18 9 q 8 9 14 27 q 6 18 9 45 q 3 27 3 59 l 0 11 q 0 33 -3 60 q -3 27 -9 45 q -6 18 -14 27 q -8 8 -17 8 q -10 0 -18 -8 q -8 -9 -14 -27 q -6 -18 -10 -45 q -3 -27 -3 -60 z M 492 537 q 0 19 1 33 q 1 14 3 24 q 2 10 6 16 q 4 5 8 5 q 5 0 8 -5 q 4 -6 6 -16 q 2 -10 3 -24 q 1 -14 1 -32 l 0 -7 q 0 -18 -1 -32 q -1 -14 -3 -24 q -2 -10 -6 -16 q -3 -5 -8 -5 q -5 0 -8 5 q -3 5 -6 15 q -2 10 -3 24 q -1 14 -1 32 z" stroke="#FCEA1C"></path>
+      <path d="M 570 404 l 24 0 l 30 148 l 0 -148 l 23 0 l 0 269 l -23 0 l -30 -148 l 0 148 l -23 0 z" stroke="#FCEA1C"></path>
+      <path d="M 666 582 l 23 -5 q 1 14 3 29 q 2 15 8 21 q 2 2 4 2 q 4 0 6 -4 q 3 -5 4 -12 q 2 -8 1 -19 q -1 -11 -5 -17 q -4 -6 -11 -11 q -11 -8 -18 -21 q -7 -13 -10 -30 q -3 -17 -3 -38 q 0 -17 2 -31 q 3 -15 6 -25 q 4 -10 9 -15 q 7 -7 16 -7 q 14 0 22 16 q 8 16 10 49 l 1 15 l -23 5 q -1 -14 -3 -22 q -3 -10 -9 -10 q -5 0 -8 6 q -3 6 -2 17 q 1 9 4 14 q 4 4 10 8 q 12 9 19 19 q 7 10 12 30 q 5 19 5 47 q 0 21 -2 37 q -3 17 -7 29 q -4 12 -10 19 q -7 7 -16 7 q -15 0 -23 -13 q -8 -13 -12 -40 q -3 -18 -4 -43 z" stroke="#FCEA1C"></path>
+    </g>
+    <g aria-label="IN" stroke="#FCEA1C">
+      <path d="M 199 65 l 24 0 l 0 268 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 247 259 l 24 0 l 0 74 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 293 66 l 23 0 l 30 148 l 0 -148 l 23 0 l 0 268 l -23 0 l -30 -148 l 0 148 l -23 0 z" stroke="#FCEA1C"></path>
+      <path d="M 391 259 l 24 0 l 0 74 l -24 0 z" stroke="#FCEA1C"></path>
+      <path d="M 475 180 l 39 0 l 0 115 q -8 17 -15 28 q -11 16 -26 16 q -14 0 -23 -16 q -9 -16 -14 -49 q -5 -33 -5 -77 q 0 -41 5 -71 q 5 -30 13 -48 q 8 -18 23 -18 q 13 0 20 7 q 7 7 10 20 q 4 13 7 37 l 2 14 l -24 14 q -2 -14 -4 -21 q -2 -6 -5 -9 q -3 -3 -6 -3 q -8 0 -13 21 q -5 25 -5 62 q 0 26 2 44 q 2 18 6 27 q 5 9 11 9 q 5 0 8 -5 q 4 -5 8 -13 z" stroke="#FCEA1C"></path>
+      <path d="M 535 259 l 24 0 l 0 74 l -24 0 z" stroke="#FCEA1C"></path>
+    </g>
+  </g>
+</svg>

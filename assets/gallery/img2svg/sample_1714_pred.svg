@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 784">
+  <g fill="none">
+    <g>
+      <g>
+        <g>
+          <rect x="13" y="13" width="730" height="730" rx="38" fill="#4996ff"></rect>
+          <rect x="62" y="50" width="38" height="25" rx="12" fill="#fff"></rect>
+          <rect x="125" y="50" width="38" height="25" rx="12" fill="#fff"></rect>
+          <rect x="188" y="50" width="38" height="25" rx="12" fill="#fff"></rect>
+          <rect x="591" y="50" width="103" height="25" rx="12" fill="#fff"></rect>
+          <rect x="62" y="113" width="659" height="608" rx="12" fill="#fff"></rect>
+        </g>
+        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="25">
+          <g>
+            <path stroke="#7f90a8" d="M 114 176 l 12 0"></path>
+            <path stroke="#f16375" d="M 176 176 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 315 176 l 50 0"></path>
+            <path stroke="#7f90a8" d="M 114 226 l 12 0"></path>
+            <path stroke="#f16375" d="M 176 226 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 354 328 l 88 0"></path>
+            <path stroke="#7f90a8" d="M 114 277 l 12 0"></path>
+            <path stroke="#4996ff" d="M 216 277 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 354 378 l 25 0"></path>
+            <path stroke="#4996ff" d="M 215 328 l 88 0"></path>
+            <path stroke="#7f90a8" d="M 114 328 l 12 0"></path>
+            <path stroke="#4996ff" d="M 215 378 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 215 428 l 139 0"></path>
+            <path stroke="#7f90a8" d="M 114 377 l 12 0"></path>
+            <path stroke="#f16375" d="M 176 479 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 403 529 l 139 0"></path>
+            <path stroke="#7f90a8" d="M 114 426 l 12 0"></path>
+            <path stroke="#4996ff" d="M 215 529 l 139 0"></path>
+            <path stroke="#58c8a3" d="M 354 579 l 126 0"></path>
+            <path stroke="#7f90a8" d="M 114 578 l 12 0"></path>
+            <path stroke="#4996ff" d="M 215 579 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 114 528 l 12 0"></path>
+            <path stroke="#4996ff" d="M 215 528 l 88 0"></path>
+            <path stroke="#58c8a3" d="M 215 630 l 88 0"></path>
+            <path stroke="#7f90a8" d="M 114 629 l 12 0"></path>
+            <path stroke="#4996ff" d="M 215 630 l 88 0"></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

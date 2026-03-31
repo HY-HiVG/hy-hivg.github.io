@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 784">
+  <defs>
+    <linearGradient id="a" x1="-118" x2="669" y1="711" y2="-101" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="b" x1="-49" x2="738" y1="780" y2="-32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="c" x1="-14" x2="773" y1="818" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="d" x1="4" x2="796" y1="837" y2="28" gradientTransform="rotate(45 43 36)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="e" x1="14" x2="806" y1="848" y2="39" gradientTransform="rotate(45 51 36)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="f" x1="11" x2="803" y1="846" y2="37" gradientTransform="rotate(45 48 44)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+    <linearGradient id="g" x1="20" x2="812" y1="855" y2="46" gradientTransform="rotate(45 55 44)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff200"></stop>
+      <stop offset="1" stop-color="#cd118c"></stop>
+    </linearGradient>
+  </defs>
+  <path fill="url(#a)" d="M 147 319 h 49 a 12.0 12.0 0.0 0 0 12 -12 v -50 a 12.0 12.0 0.0 0 0 -12 -12 h -49 a 12.0 12.0 0.0 0 0 -12 12 v 49 a 12.0 12.0 0.0 0 0 12 13 z M 159 270 h 25 v 25 h -25 z"></path>
+  <path fill="url(#b)" d="M 588 319 h 49 a 12.0 12.0 0.0 0 0 12 -12 v -50 a 12.0 12.0 0.0 0 0 -12 -12 h -49 a 12.0 12.0 0.0 0 0 -12 12 v 49 a 12.0 12.0 0.0 0 0 12 13 z M 600 270 h 25 v 25 h -25 z"></path>
+  <path fill="url(#c)" d="M 747 25 h -710 a 12.0 12.0 0.0 0 0 -12 12 v 49 a 12.0 12.0 0.0 0 0 12 12 h 24 v 37 a 12.0 12.0 0.0 0 0 12 12 h 25 v 294 h -24 a 12.0 12.0 0.0 0 0 -12 12 v 49 a 12.0 12.0 0.0 0 0 12 12 h 24 v 37 a 12.0 12.0 0.0 0 0 12 12 h 25 v 196 h -61 a 12.0 12.0 0.0 0 0 0 25 h 612 a 12.0 12.0 0.0 0 0 0 -25 h -61 v -196 h 25 a 12.0 12.0 0.0 0 0 12 -12 v -37 h 25 a 12.0 12.0 0.0 0 0 12 -12 v -49 a 12.0 12.0 0.0 0 0 -12 -12 h -25 v -294 h 25 a 12.0 12.0 0.0 0 0 12 -12 v -37 h 25 a 12.0 12.0 0.0 0 0 12 -12 v -49 a 12.0 12.0 0.0 0 0 -13 -12 z M 637 735 h -490 v -196 h 490 z M 649 514 h -514 v -24 h 514 z M 686 465 h -588 v -24 h 588 z M 135 417 v -294 h 171 v 294 z M 331 417 v -294 h 122 v 294 z M 478 417 v -294 h 171 v 294 z M 686 123 h -588 v -25 h 588 z M 735 74 h -686 v -25 h 686 z"></path>
+  <path fill="url(#d)" d="M 306 649 a 12.0 12.0 0.0 0 0 9 -4 l 25 -25 a 12.0 12.0 0.0 0 0 -17 -17 l -25 25 a 12.0 12.0 0.0 0 0 8 21 z"></path>
+  <path fill="url(#e)" d="M 315 690 a 12.0 12.0 0.0 0 0 17 0 l 74 -74 a 12.0 12.0 0.0 0 0 -17 -17 l -74 74 a 12.0 12.0 0.0 0 0 0 17 z"></path>
+  <path fill="url(#f)" d="M 383 653 l -25 25 a 12.0 12.0 0.0 1 0 17 17 l 25 -25 a 12.0 12.0 0.0 0 0 -17 -17 z"></path>
+  <path fill="url(#g)" d="M 478 649 h 49 a 12.0 12.0 0.0 0 0 12 -12 v -49 a 12.0 12.0 0.0 0 0 -12 -12 h -49 a 12.0 12.0 0.0 0 0 -12 12 v 49 a 12.0 12.0 0.0 0 0 12 12 z M 490 600 h 25 v 25 h -25 z"></path>
+</svg>

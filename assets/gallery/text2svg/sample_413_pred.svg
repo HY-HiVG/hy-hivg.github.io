@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 784">
+  <g clip-path="url(#clip0_2523_6177)" fill="none">
+    <path fill="#1eb4eb" fill-opacity=".2" d="M 0 392 c 0 -323 69 -392 392 -392 c 323 0 392 69 392 392 c 0 323 -69 392 -392 392 c -323 0 -392 -69 -392 -392 z"></path>
+    <g filter="url(#filter0_f_2523_6177)" opacity=".6">
+      <ellipse cx="392" cy="616" fill="url(#paint0_linear_2523_6177)" rx="280" ry="84"></ellipse>
+    </g>
+    <path fill="url(#paint1_radial_2523_6177)" d="M 542 239 l -59 -59 c -6 -6 -13 -11 -21 -14 c -7 -3 -15 -5 -24 -5 h -151 c -17 0 -33 7 -45 18 c -11 12 -18 28 -18 45 v 336 c 0 17 7 33 18 45 c 12 11 28 18 45 18 h 210 c 17 0 33 -7 45 -18 c 11 -12 18 -28 18 -45 v -277 c 0 -16 -7 -32 -18 -44 z M 455 211 l 54 55 h -33 c -6 0 -11 -2 -15 -6 c -4 -4 -6 -9 -6 -15 v -34 z M 518 560 c 0 6 -2 11 -6 15 c -4 4 -9 6 -15 6 h -210 c -6 0 -11 -2 -15 -6 c -4 -4 -6 -9 -6 -15 v -336 c 0 -6 2 -11 6 -15 c 4 -4 9 -6 15 -6 h 126 v 42 c 0 17 7 33 18 45 c 12 11 28 18 45 18 h 42 v 252 z"></path>
+    <path fill="url(#paint2_radial_2523_6177)" fill-opacity=".4" d="M 509 266 h -33 c -6 0 -11 -2 -15 -6 c -4 -4 -6 -9 -6 -15 v -34 l 54 55 z"></path>
+    <path fill="url(#paint3_radial_2523_6177)" fill-opacity=".4" d="M 476 308 c -17 0 -33 -7 -45 -18 c -11 -12 -18 -28 -18 -45 v -42 h -126 c -6 0 -11 2 -15 6 c -4 4 -6 9 -6 15 v 336 c 0 6 2 11 6 15 c 4 4 9 6 15 6 h 210 c 6 0 11 -2 15 -6 c 4 -4 6 -9 6 -15 v -252 h -42 z M 392 497 c -59 0 -94 -53 -96 -55 c -3 -4 -3 -10 0 -14 c 1 -2 37 -55 96 -55 c 59 0 94 53 96 55 c 3 4 3 10 0 14 c -1 2 -37 55 -96 55 z"></path>
+    <path fill="url(#paint4_radial_2523_6177)" d="M 392 392 c -59 0 -94 53 -96 55 c -3 4 -3 10 0 14 c 1 2 37 55 96 55 c 59 0 94 -53 96 -55 c 3 -4 3 -10 0 -14 c -1 -2 -37 -55 -96 -55 z M 392 476 c -22 0 -42 -13 -55 -28 c 13 -15 33 -28 55 -28 c 22 0 42 13 55 28 c -13 15 -33 28 -55 28 z"></path>
+    <path fill="url(#paint5_radial_2523_6177)" d="M 392 434 c -12 0 -21 9 -21 21 c 0 12 9 21 21 21 c 12 0 21 -9 21 -21 c 0 -12 -9 -21 -21 -21 z"></path>
+  </g>
+  <defs>
+    <radialGradient id="paint1_radial_2523_6177" cx="0" cy="0" r="28" gradientTransform="matrix(12 16.2534 -7.43131 10.3731 8 5.75)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed9f5"></stop>
+      <stop offset=".5" stop-color="#1eb4eb"></stop>
+    </radialGradient>
+    <radialGradient id="paint2_radial_2523_6177" cx="0" cy="0" r="28" gradientTransform="matrix(1.9425 1.92824 -1.20294 1.23062 16.25 7.542)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed9f5"></stop>
+      <stop offset=".5" stop-color="#1eb4eb"></stop>
+    </radialGradient>
+    <radialGradient id="paint3_radial_2523_6177" cx="0" cy="0" r="28" gradientTransform="matrix(9 13.2982 -5.57348 8.48706 9.5 7.25)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed9f5"></stop>
+      <stop offset=".5" stop-color="#1eb4eb"></stop>
+    </radialGradient>
+    <radialGradient id="paint4_radial_2523_6177" cx="0" cy="0" r="28" gradientTransform="matrix(6.00227 4.43275 -3.71706 2.82902 10.999 13.25)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed9f5"></stop>
+      <stop offset=".5" stop-color="#1eb4eb"></stop>
+    </radialGradient>
+    <radialGradient id="paint5_radial_2523_6177" cx="0" cy="0" r="28" gradientTransform="matrix(1.5 1.47758 -.92892 .94301 13.25 16.5)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ed9f5"></stop>
+      <stop offset=".5" stop-color="#1eb4eb"></stop>
+    </radialGradient>
+    <linearGradient id="paint0_linear_2523_6177" x1="392" x2="392" y1="532" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1eb4eb" stop-opacity="0"></stop>
+      <stop offset="1" stop-color="#1eb4eb"></stop>
+    </linearGradient>
+    <clipPath id="clip0_2523_6177">
+      <rect width="784" height="784" fill="#fff"></rect>
+    </clipPath>
+    <filter id="filter0_f_2523_6177" width="784" height="392" x="0" y="420" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+      <feGaussianBlur result="effect1_foregroundBlur_2523_6177" stdDeviation="2"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>
