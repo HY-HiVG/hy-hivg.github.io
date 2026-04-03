@@ -23,8 +23,15 @@ yarn-error.log*
 .cursor
 .vscode
 
-### IntelliJ IDEA ###
+# IntelliJ IDEA
 .idea
 *.iws
 *.iml
 *.ipr
+
+# macOS
+.DS_Store
+
+# local test files
+teaser-record.html
+teaser-record.gif
