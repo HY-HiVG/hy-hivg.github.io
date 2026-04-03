@@ -2,7 +2,7 @@
 
 Project page for *"Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling"*.
 
-**[Paper](https://hivg.github.io/assets/HiVG_submit_ArXiv.pdf)** | **[Project Page](https://hivg.github.io/)**
+**[Project Page](https://hy-hivg.github.io/)**
 
 ## About
 
