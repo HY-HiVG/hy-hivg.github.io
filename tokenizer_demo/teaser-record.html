@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HiVG Teaser</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#08080c;font-family:'SF Pro Display','Helvetica Neue',Arial,sans-serif;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;overflow:hidden;gap:48px}
+
+#stage{
+  width:960px;
+  display:grid;
+  grid-template-columns:200px 1fr 1fr;
+  gap:0;
+  background:#0e0e14;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #1a1a24;
+  opacity:1;
+  transition:opacity .4s ease;
+}
+#stage.fade{opacity:0}
+
+.preview{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:28px 20px;
+  background:#111118;
+  border-right:1px solid #1a1a24;
+  gap:12px;
+}
+.preview-svg-wrap{
+  width:120px;height:120px;border-radius:14px;background:#f5f5f0;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.preview-svg-wrap svg{width:100%;height:100%;display:block}
+.preview-svg-wrap svg path{opacity:0;transition:opacity .45s ease}
+.preview-svg-wrap svg path.drawn{opacity:1}
+/* clip reveal for single-path SVGs */
+.preview-svg-wrap svg.clip-reveal{
+  clip-path:inset(100% 0 0 0);
+  transition:clip-path 4.5s cubic-bezier(.25,.46,.45,.94);
+}
+.preview-svg-wrap svg.clip-reveal.revealed{
+  clip-path:inset(0 0 0 0);
+}
+.preview-name{font-size:15px;font-weight:600;color:#e0e0e0;letter-spacing:.3px}
+.preview-ratio{
+  font-size:36px;font-weight:800;
+  background:linear-gradient(135deg,#818cf8,#c084fc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  font-variant-numeric:tabular-nums;
+  opacity:0;transition:opacity .6s ease;
+}
+.preview-ratio.visible{opacity:1}
+.preview-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#555;margin-top:-6px}
+
+.panel{padding:20px 22px;position:relative}
+.panel+.panel{border-left:1px solid #1a1a24}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+.panel-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.6px;color:#555}
+.panel-count{font-size:12px;color:#666;font-variant-numeric:tabular-nums}
+.panel-count span{color:#ddd;font-weight:700;font-size:15px}
+.bar-wrap{height:3px;background:#1a1a1f;border-radius:2px;overflow:hidden;margin-bottom:10px}
+.bar{height:100%;border-radius:2px;width:0;transition:width 1s cubic-bezier(.22,.61,.36,1)}
+.bar-raw{background:#444}
+.bar-hivg{background:linear-gradient(90deg,#818cf8,#c084fc)}
+
+.tokens{display:flex;flex-wrap:wrap;gap:3px 3px;max-height:240px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);
+}
+.tok{
+  display:inline-block;padding:2px 5px;border-radius:3px;
+  font-size:10px;font-family:'SF Mono',Consolas,'Courier New',monospace;
+  line-height:1.55;white-space:nowrap;
+  opacity:0;transform:translateX(8px);
+  animation:tokIn .14s ease forwards;
+}
+@keyframes tokIn{to{opacity:1;transform:translateX(0)}}
+
+#tok-r .tok-tag{background:#151e2e;color:#5a9abf}
+#tok-r .tok-attr{background:#171420;color:#9a8abf}
+#tok-r .tok-val{background:#14201a;color:#5fa87a}
+#tok-r .tok-punct{background:#151518;color:#444}
+#tok-r .tok-space{background:#111114;color:#282828;min-width:5px;padding:2px 2px!important;font-size:0}
+#tok-r .tok-cmd{background:#24225e;color:#7e72b5}
+#tok-r .tok-coord{background:#172a45;color:#6a94b8}
+#tok-r .tok-seg{background:#2a1248;color:#a88ac5}
+
+#tok-h .tok-tag{background:#1e3460;color:#93d5ff;text-shadow:0 0 6px rgba(125,211,252,.3)}
+#tok-h .tok-attr{background:#2a2048;color:#d4c4ff;text-shadow:0 0 6px rgba(196,181,253,.3)}
+#tok-h .tok-val{background:#1e3e24;color:#a0ffbe;text-shadow:0 0 6px rgba(134,239,172,.3)}
+#tok-h .tok-punct{background:#1c1c24;color:#777}
+#tok-h .tok-space{background:#141418;color:#444;min-width:5px;padding:2px 2px!important;font-size:0}
+#tok-h .tok-cmd{background:#3d38a8;color:#c4b5ff;text-shadow:0 0 6px rgba(167,139,250,.35)}
+#tok-h .tok-coord{background:#264e80;color:#b0daff;text-shadow:0 0 6px rgba(147,197,253,.3)}
+#tok-h .tok-seg{background:#5520a0;color:#e8ccff;text-shadow:0 0 8px rgba(216,180,254,.4)}
+
+#replay{
+  background:none;border:1px solid #2a2a35;color:#666;
+  font-size:11px;padding:5px 16px;border-radius:6px;
+  cursor:pointer;letter-spacing:.5px;transition:all .2s;
+  font-family:inherit;
+}
+#replay:hover{border-color:#555;color:#aaa}
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div class="preview">
+    <div class="preview-svg-wrap" id="svg-wrap"></div>
+    <div class="preview-name" id="name"></div>
+    <div class="preview-ratio" id="ratio"></div>
+    <div class="preview-label">compression</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Raw SVG String</div>
+      <div class="panel-count"><span id="cnt-r">0</span> tokens</div>
+    </div>
+    <div class="bar-wrap"><div class="bar bar-raw" id="bar-r"></div></div>
+    <div class="tokens" id="tok-r"></div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">HiVG Tokens</div>
+      <div class="panel-count"><span id="cnt-h">0</span> tokens</div>
+    </div>
+    <div class="bar-wrap"><div class="bar bar-hivg" id="bar-h"></div></div>
+    <div class="tokens" id="tok-h"></div>
+  </div>
+</div>
+
+<button id="replay" onclick="runNext()">↻ Replay</button>
+
+<script>
+(function () {
+
+  function T(s) {
+    var t = [], i = 0, n = s.length;
+    while (i < n) {
+      var c = s[i];
+      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+        var w = '';
+        while (i < n && ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))) w += s[i++];
+        t.push(w);
+      } else { t.push(c); i++; }
+    }
+    return t;
+  }
+
+  var EXAMPLES = [
+    {
+      name: 'Trophy',
+      ratio: '2.73×',
+      type: 'multi-path',
+      svg: [
+        {fill:'#fff',    d:'M 392 588 l 0 -49 c 0 0 0 -49 49 -49 l 0 -49 l -98 0 l 0 49 c 49 0 49 49 49 49 l 0 49 z'},
+        {fill:'#121342', d:'M 441 600 l -98 0 c -7 0 -12 -5 -12 -12 l 0 -49 c 0 0 0 -13 -7 -25 c -8 -12 -22 -24 -54 -24 c -7 0 -12 -5 -12 -12 l 0 -49 c 0 -8 5 -12 12 -12 l 245 0 c 7 0 12 4 12 12 l 0 49 c 0 7 -5 12 -12 12 c -32 0 -46 12 -53 24 c -8 12 -8 25 -8 25 l 0 49 c 0 7 -5 12 -12 12 M 355 576 l 74 0 l 0 -37 c 0 -3 0 -20 11 -37 c 11 -18 31 -29 61 -32 l 0 -25 l -220 0 l 0 25 c 30 3 50 14 62 32 c 11 17 11 34 11 37 z'},
+        {fill:'#fff',    d:'M 294 662 l 0 -25 c 0 -27 22 -49 49 -49 l 98 0 c 27 0 49 22 49 49 l 0 25 z'},
+        {fill:'#121342', d:'M 490 674 l -196 0 c -7 0 -12 -5 -12 -12 l 0 -25 c 0 -34 27 -61 61 -61 l 98 0 c 34 0 61 27 61 61 l 0 25 c 0 7 -5 12 -12 12 M 306 649 l 172 0 l 0 -12 c 0 -20 -17 -37 -37 -37 l -98 0 c -20 0 -37 17 -37 37 z'},
+        {fill:'#fff',    d:'M 245 760 l 0 -25 c 0 -27 22 -49 49 -49 l 196 0 c 27 0 49 22 49 49 l 0 25 z'},
+        {fill:'#121342', d:'M 539 772 l -294 0 c -7 0 -12 -5 -12 -12 l 0 -25 c 0 -34 27 -61 61 -61 l 196 0 c 34 0 61 27 61 61 l 0 25 c 0 7 -5 12 -12 12 M 257 747 l 270 0 l 0 -12 c 0 -20 -17 -37 -37 -37 l -196 0 c -20 0 -37 17 -37 37 z'},
+        {fill:'#fff',    d:'M 662 86 l 0 24 c 0 27 -23 49 -50 49 l -48 0 l 0 -49 l -343 0 l 0 49 l -49 0 c -27 0 -49 -22 -49 -49 l 0 -24 c 0 -27 22 -49 49 -49 l 441 0 c 27 0 50 22 50 49'},
+        {fill:'#121342', d:'M 662 159 l -74 0 c -7 0 -12 -5 -12 -12 l 0 -37 l -319 0 c -7 0 -12 -5 -12 -12 c 0 -7 5 -12 12 -12 l 331 0 c 7 0 12 5 12 12 l 0 37 l 62 0 c -3 -21 -22 -37 -43 -37 l -13 0 c -7 0 -12 -5 -12 -12 c 0 -7 5 -12 12 -12 l 13 0 c 34 0 61 27 61 61 l 0 12 c 0 8 -5 13 -12 13'},
+        {fill:'#121342', d:'M 196 159 l -73 0 c -8 0 -13 -5 -13 -12 l 0 -12 c 0 -34 27 -61 62 -61 l 12 0 c 7 0 12 5 12 12 c 0 7 -5 12 -12 12 l -12 0 c -22 0 -40 16 -43 37 l 61 0 l 0 -37 c 0 -7 5 -12 12 -12 l 25 0 c 7 0 12 5 12 12 c 0 7 -5 12 -12 12 l -12 0 l 0 37 c 0 7 -5 12 -12 12'},
+        {fill:'#fff',    d:'M 613 61 l 0 196 c 0 122 -99 221 -221 221 c -122 0 -221 -99 -221 -221 l 0 -196 z'},
+        {fill:'#121342', d:'M 392 478 c -129 0 -233 -105 -233 -233 l 0 -196 c 0 -7 5 -12 13 -12 l 441 0 c 7 0 12 5 12 12 l 0 196 c 0 128 -104 233 -233 233 M 184 61 l 0 184 c 0 115 93 208 208 208 c 115 0 208 -93 208 -208 l 0 -184 z'},
+        {fill:'#f73449', d:'M 392 159 l 32 66 l 74 10 l -52 51 l 12 73 l -66 -34 l -66 34 l 12 -73 l -52 -51 l 74 -10 z'},
+        {fill:'#121342', d:'M 458 368 c -2 0 -5 0 -5 -2 l -61 -32 l -61 32 c -5 3 -10 3 -15 0 c -5 -3 -7 -8 -7 -12 l 12 -69 l -49 -49 c -5 -5 -5 -10 -5 -15 c 3 -5 8 -7 12 -7 l 69 -10 l 30 -64 c 2 -5 7 -8 12 -8 c 5 0 10 3 12 8 l 30 64 l 69 10 c 4 0 9 2 12 7 c 2 5 0 10 -5 15 l -49 49 l 12 69 c 0 4 -2 9 -7 12 c 0 0 -2 2 -5 2 M 392 306 c 2 0 5 0 5 2 l 44 22 l -7 -49 c 0 -5 0 -10 5 -12 l 34 -32 l -49 -7 c -5 0 -10 -2 -12 -7 l -22 -44 l -22 44 c -2 5 -7 7 -12 7 l -49 7 l 34 32 c 5 2 5 7 5 12 l -7 49 l 44 -22 c 0 0 2 -2 5 -2'}
+      ],
+      viewBox: '0 0 784 784',
+      rawN: 123, hivgN: 45,
+      raw: T('<path fill="#fff" d="M 392 588 l 0 -49 c 0 0 0 -49 49 -49 l 0 -49 l -98 0 l 0 49 c 49 0 49 49 49 49 l 0 49 z"/><path fill="#121342" d="M 441 600 l -98 0 c -7 0 -12 -5 -12 -12 l 0 -49 c 0 0 0 -13 5 -12 12 -12"/><path fill="#121342" d="M 269 443 c -49 0 -86 -20 -98 -49 l 0 -49 c 0 -7 5 -12 12 -12"/><path fill="#121342" d="M 515 443 c 49 0 86 -20 98 -49 l 0 -49 c 0 -7 -5 -12 -12 -12"/><path fill="#121342" d="M 269 688 h 246 c 14 0 24 -10 24 -24 v -12 h -294 v 12 c 0 14 10 24 24 24"/><path fill="#fff" d="M 392 240 l 24 49 l 49 12 l -37 37 l 7 49 l -43 -24 l -43 24 l 7 -49 l -37 -37 l 49 -12 z"/>'),
+      hivg: ['<path>','fill_fff','cmd_M','P_392','P_588','cmd_l','P_0','P_n49','<SEG_0>','cmd_z','<path>','fill_121342','cmd_M','P_441','P_600','cmd_l','P_n98','P_0','<SEG_1>','cmd_z','<path>','fill_121342','cmd_M','P_269','P_443','<SEG_2>','<path>','fill_121342','cmd_M','P_515','P_443','<SEG_3>','<path>','fill_121342','cmd_M','P_269','P_688','<SEG_4>','<path>','fill_fff','cmd_M','P_392','P_240','<SEG_5>','cmd_z']
+    },
+    {
+      name: 'Robot',
+      ratio: '2.81×',
+      type: 'single-path',
+      svg: [{fill:'#000', d:'M 649 147 c -43 -87 -142 -147 -257 -147 s -214 60 -257 147 c -28 2 -51 23 -51 49 v 98 c 0 26 23 47 51 49 c 43 87 142 147 257 147 s 214 -60 257 -147 c 29 -2 51 -23 51 -49 v -98 c 0 -26 -23 -47 -51 -49 z M 588 221 v 25 c 0 81 -75 147 -168 147 h -56 c -93 0 -168 -66 -168 -147 v -25 c 0 -41 38 -74 84 -74 h 224 c 46 0 84 33 84 74 z M 331 249 l -11 -32 c -2 -5 -7 -8 -13 -8 s -11 3 -13 8 l -11 32 l -37 9 c -6 1 -10 6 -10 11 s 4 10 10 11 l 37 9 l 11 32 c 2 5 7 8 13 8 s 11 -3 13 -8 l 11 -32 l 37 -9 c 6 -1 10 -6 10 -11 s -4 -10 -10 -11 l -37 -9 z M 197 485 c -115 40 -197 138 -197 254 c 0 25 23 45 52 45 h 172 v -98 c 0 -27 25 -49 56 -49 h 224 c 31 0 56 22 56 49 v 98 l 172 0 c 29 0 52 -20 52 -45 c 0 -115 -82 -214 -197 -254 c -55 34 -122 54 -195 54 s -140 -20 -195 -54 z M 308 686 c -15 0 -28 11 -28 25 v 74 h 56 v -74 c 0 -13 -13 -25 -28 -25 z M 476 735 c 15 0 28 -11 28 -25 s -13 -25 -28 -25 s -28 11 -28 25 s 13 25 28 25 z'}],
+      rawN: 152, hivgN: 54,
+      viewBox: '0 0 784 784',
+      raw: T('<path fill="#000" d="M 649 147 c -43 -87 -142 -147 -257 -147 s -214 60 -257 147 c -28 2 -51 23 -51 49 v 98 c 0 26 23 47 51 49 c 43 87 142 147 257 147 s 214 -60 257 -147 c 29 -2 51 -23 51 -49 v -98 c 0 -26 -23 -47 -51 -49 z M 588 221 v 25 c 0 81 -75 147 -168 147 h -56 c -93 0 -168 -66 -168 -147 v -25 c 0 -41 38 -74 84 -74 h 224 c 46 0 84 33 84 74 z M 331 249 l -11 -32 c -2 -5 -7 -8 -13 -8 s -11 3 -13 8 l -11 32 l -37 9 c -6 1 -10 6 -10 11 s 4 10 10 11 l 37 9 l 11 32 c 2 5 7 8 13 8 s 11 -3 13 -8 l 11 -32 l 37 -9 c 6 -1 10 -6 10 -11 s -4 -10 -10 -11 l -37 -9 z M 197 485 c -115 40 -197 138 -197 254 c 0 25 23 45 52 45 h 172 v -98 c 0 -27 25 -49 56 -49 h 224 c 31 0 56 22 56 49 v 98 l 172 0 c 29 0 52 -20 52 -45 c 0 -115 -82 -214 -197 -254 c -55 34 -122 54 -195 54 s -140 -20 -195 -54 z M 308 686 c -15 0 -28 11 -28 25 v 74 h 56 v -74 c 0 -13 -13 -25 -28 -25 z M 476 735 c 15 0 28 -11 28 -25 s -13 -25 -28 -25 s -28 11 -28 25 s 13 25 28 25 z"/>'),
+      hivg: ['<path>','fill_000','cmd_M','P_649','P_147','cmd_c','P_n43','P_n87','P_n142','P_n147','<SEG_0>','cmd_s','P_n214','P_60','<SEG_1>','cmd_v','P_98','<SEG_2>','cmd_z','cmd_M','P_588','P_221','cmd_v','P_25','cmd_c','P_0','P_81','<SEG_3>','cmd_z','cmd_M','P_331','P_249','cmd_l','P_n11','P_n32','<SEG_4>','cmd_z','cmd_M','P_197','P_485','cmd_c','P_n115','P_40','<SEG_5>','cmd_z','cmd_M','P_308','P_686','<SEG_6>','cmd_z','cmd_M','P_476','P_735','<SEG_7>','cmd_z']
+    }
+  ];
+
+  var ei = 0;
+  var timers = [];
+  var autoTimer = null;
+
+  function clearTimers() {
+    timers.forEach(function(t){ clearInterval(t); clearTimeout(t); });
+    timers = [];
+    if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+  }
+
+  function cls(t) {
+    if (t.startsWith('<SEG_')) return 'tok-seg';
+    if (t.startsWith('<') || t.startsWith('</')) return 'tok-tag';
+    if (t.startsWith('cmd_')) return 'tok-cmd';
+    if (t.startsWith('P_')) return 'tok-coord';
+    if (t.startsWith('CLR_') || t.startsWith('fill_')) return 'tok-val';
+    if (t.startsWith('attr_')) return 'tok-attr';
+    if (t === ' ') return 'tok-space';
+    if (/^[<>=\/\-"{}().]$/.test(t) || t === '…') return 'tok-punct';
+    if (/^\d$/.test(t)) return 'tok-coord';
+    if (/^#/.test(t)) return 'tok-val';
+    if (/^[A-Z]$/.test(t)) return 'tok-cmd';
+    if (/^[a-z]/.test(t)) return 'tok-attr';
+    return 'tok-punct';
+  }
+
+  function buildSVG(ex) {
+    var wrap = document.getElementById('svg-wrap');
+    var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox', ex.viewBox);
+    svg.id = 'active-svg';
+    ex.svg.forEach(function(p) {
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('fill', p.fill);
+      path.setAttribute('d', p.d);
+      svg.appendChild(path);
+    });
+    if (ex.type === 'single-path') svg.classList.add('clip-reveal');
+    wrap.innerHTML = '';
+    wrap.appendChild(svg);
+    return svg;
+  }
+
+  function run(ex) {
+    clearTimers();
+    var stage = document.getElementById('stage');
+    var tokR = document.getElementById('tok-r');
+    var tokH = document.getElementById('tok-h');
+    var barR = document.getElementById('bar-r');
+    var barH = document.getElementById('bar-h');
+    var cntR = document.getElementById('cnt-r');
+    var cntH = document.getElementById('cnt-h');
+    var ratio = document.getElementById('ratio');
+    var nameEl = document.getElementById('name');
+
+    tokR.innerHTML = '';
+    tokH.innerHTML = '';
+    barR.style.transition = 'none'; barR.style.width = '0';
+    barH.style.transition = 'none'; barH.style.width = '0';
+    void barR.offsetWidth;
+    barR.style.transition = '';
+    barH.style.transition = '';
+    cntR.textContent = '0';
+    cntH.textContent = '0';
+    ratio.textContent = ex.ratio;
+    ratio.classList.remove('visible');
+    nameEl.textContent = ex.name;
+
+    var svg = buildSVG(ex);
+    var paths = svg.querySelectorAll('path');
+
+    var raw = ex.raw, hivg = ex.hivg;
+    var rLen = raw.length, hLen = hivg.length;
+    var rawN = ex.rawN, hivgN = ex.hivgN;
+    var ri = 0, hi = 0;
+    var R_BATCH = 6, H_BATCH = 2;
+    var R_INT = 35, H_INT = 60;
+
+    var totalHivg = Math.ceil(hLen / H_BATCH) * H_INT;
+
+    if (ex.type === 'multi-path') {
+      var pathGap = totalHivg / paths.length;
+      for (var pi = 0; pi < paths.length; pi++) {
+        (function(idx) {
+          var t = setTimeout(function(){ paths[idx].classList.add('drawn'); }, 300 + idx * pathGap);
+          timers.push(t);
+        })(pi);
+      }
+    } else {
+      paths.forEach(function(p){ p.style.opacity = '1'; });
+      var t0 = setTimeout(function(){ svg.classList.add('revealed'); }, 100);
+      timers.push(t0);
+    }
+
+    var t1 = setInterval(function() {
+      if (ri >= rLen) { clearInterval(t1); return; }
+      var frag = document.createDocumentFragment();
+      for (var b = 0; b < R_BATCH && ri < rLen; b++, ri++) {
+        var s = document.createElement('span');
+        s.className = 'tok ' + cls(raw[ri]);
+        s.textContent = raw[ri];
+        frag.appendChild(s);
+      }
+      tokR.appendChild(frag);
+      barR.style.width = (ri / rLen * 100 | 0) + '%';
+      cntR.textContent = (ri / rLen * rawN | 0);
+    }, R_INT);
+    timers.push(t1);
+
+    var t2 = setTimeout(function() {
+      var t3 = setInterval(function() {
+        if (hi >= hLen) { clearInterval(t3); return; }
+        var frag = document.createDocumentFragment();
+        for (var b = 0; b < H_BATCH && hi < hLen; b++, hi++) {
+          var s = document.createElement('span');
+          s.className = 'tok ' + cls(hivg[hi]);
+          s.textContent = hivg[hi];
+          frag.appendChild(s);
+        }
+        tokH.appendChild(frag);
+        barH.style.width = (hi / hLen * 100 | 0) + '%';
+        cntH.textContent = (hi / hLen * hivgN | 0);
+      }, H_INT);
+      timers.push(t3);
+    }, 300);
+    timers.push(t2);
+
+    var dur = Math.max(Math.ceil(rLen / R_BATCH) * R_INT, totalHivg + 300) + 400;
+    var t4 = setTimeout(function() {
+      cntR.textContent = rawN;
+      cntH.textContent = hivgN;
+      barR.style.width = '100%';
+      barH.style.width = (hivgN / rawN * 100 | 0) + '%';
+      ratio.classList.add('visible');
+    }, dur);
+    timers.push(t4);
+
+    if (ei < EXAMPLES.length - 1) {
+      autoTimer = setTimeout(function() {
+        stage.classList.add('fade');
+        var t5 = setTimeout(function() {
+          ei++;
+          run(EXAMPLES[ei]);
+          stage.classList.remove('fade');
+        }, 450);
+        timers.push(t5);
+      }, dur + 2500);
+      timers.push(autoTimer);
+    }
+  }
+
+  window.runNext = function() {
+    clearTimers();
+    ei = 0;
+    var stage = document.getElementById('stage');
+    stage.classList.add('fade');
+    setTimeout(function() {
+      run(EXAMPLES[ei]);
+      stage.classList.remove('fade');
+    }, 400);
+  };
+
+  setTimeout(function(){ run(EXAMPLES[0]); }, 500);
+})();
+</script>
+</body>
+</html>
