@@ -1,6 +1,6 @@
 @article{xing2026hivg,
   title={Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling},
   author={Xing, Ximing and Xue, Ziteng and Li, Zhenxi and Liang, Weicong and Wang, Linqing and Yang, Zhantao and Hang, Tiankai and Yin, Zijin and Lu, Qinglin and Wang, Chunyu and Yu, Qian},
-  booktitle={arXiv},
+  journal={arXiv preprint arXiv:2604.05072},
   year={2026}
 }

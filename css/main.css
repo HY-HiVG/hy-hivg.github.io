@@ -118,10 +118,29 @@ p span {
     margin-right: 8px;
 }
 
-#links #paper::before { content: "\e000"; font-size: 18px; }
-#links #arxiv::before { content: "\e001"; font-size: 20px; }
-#links #code::before  { content: "\e002"; font-size: 20px; }
-#links #demo::before  { content: "\e005"; font-size: 20px; }
+#links #paper::before      { content: "\e000"; font-size: 18px; }
+#links #arxiv::before      { content: "\e001"; font-size: 20px; }
+#links #code::before       { content: "\e002"; font-size: 20px; }
+#links #huggingface::before { content: "\e005"; font-size: 20px; }
+#links #modelscope::before,
+#links #gradio::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: inherit;
+    vertical-align: middle;
+}
+#links #modelscope::before {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='%23ffffffef'%3E%3Cpath d='M2.667 5.333V8H0v5.333h2.667v-2.666H.5V8.5h2.166v2.166h2.666V8H8V5.333Zm0 8v5.334H8V16H5.333v-2.667Zm13.333-8V8h2.667v2.667h2.666V8.5H23.5v2.166h-2.166v2.666H24V8h-2.667V5.333Zm5.333 8h-2.666V16H16v2.667h5.333zM8 10.667v2.666h2.667v-2.666zm2.667 2.666V16h2.666v-2.667zm2.666 0H16v-2.666h-2.667z'/%3E%3C/svg%3E");
+}
+#links #gradio::before {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='%23ffffffef'%3E%3Cpath d='M12 1.527A1.532 1.532 0 0011.24 1.73L.7695 7.732A1.532 1.532 0 000 9.021v.088a1.532 1.532 0 00.7695 1.291L3.57 12 .7695 13.61C.256 13.9 0 14.42 0 14.94c0 .51.256 1.03.7695 1.32l10.4705 6.01c.47.27 1.05.27 1.52 0l10.47-6.01c.5-.28.76-.78.77-1.29v-.07c-.01-.5-.27-1.01-.77-1.29L20.42 12l2.81-1.6A1.532 1.532 0 0024 9.223v-.313a1.532 1.532 0 00-.77-1.178L12.76 1.73A1.532 1.532 0 0012 1.527zM12 4.826l7.39 4.235-2.05 1.179-4.58-2.638a1.532 1.532 0 00-1.52 0L6.652 10.24 4.613 9.061 12 4.826zM12 10.7l2.27 1.3L12 13.3 9.734 12 12 10.7zm-5.348 3.07l4.588 2.62a1.532 1.532 0 001.52 0l4.58-2.62 2.05 1.17L12 19.17l-7.387-4.23 2.039-1.17z'/%3E%3C/svg%3E");
+}
 
 /* ── Feature Tabs ─────────────────────── */
 .feature-container {
@@ -215,34 +234,43 @@ p span {
 }
 
 /* ── BibTeX ───────────────────────────── */
+.bibtex-wrap {
+    position: relative;
+    margin: 32px 0;
+}
 .bibtex-entry {
-    margin: 32px auto;
-    max-width: 900px;
-    padding: 0 24px;
     color: #ffffffbf;
-    font-family: consolas, monospace;
-    white-space: pre;
-    text-wrap: wrap;
-    font-size: 15px;
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
-}
-
-.line {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 0;
-}
-
-.key {
-    font-family: consolas, monospace;
-    text-align: right;
-}
-
-.value {
-    font-family: consolas, monospace;
+    font-family: consolas, 'SF Mono', monospace;
+    white-space: pre-wrap;
     word-break: break-word;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 0;
+    padding: 20px 24px;
+    background: #0d0d12;
+    border: 1px solid #1a1a24;
+    border-radius: 10px;
+}
+.bibtex-copy {
+    position: absolute;
+    top: 10px;
+    right: 34px;
+    background: #1a1a24;
+    border: 1px solid #2a2a35;
+    color: #888;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    z-index: 1;
+}
+.bibtex-copy:hover {
+    background: #222230;
+    border-color: #444;
+    color: #ccc;
 }
 
 /* ── Image Slideshow ──────────────────── */

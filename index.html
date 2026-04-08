@@ -53,9 +53,11 @@
             </div>
             <div id="links" style="margin-bottom: 10%;pointer-events:auto;">
                 <div><a id="paper" href="assets/HiVG_report.pdf">Paper</a></div>
-                <div><a id="arxiv" href="#">ArXiv</a></div>
+                <div><a id="arxiv" href="https://arxiv.org/abs/2604.05072">arXiv</a></div>
                 <div><a id="code" href="https://github.com/ximinng/HiVG">Code</a></div>
-                <div><a id="model" href="#">Model</a></div>
+                <!-- <div><a id="huggingface" href="#">HuggingFace</a></div> -->
+                <!-- <div><a id="modelscope" href="#">ModelScope</a></div> -->
+                <!-- <div><a id="gradio" href="#">Demo</a></div> -->
             </div>
         </div>
     </div>
@@ -688,14 +690,26 @@
 
         <!-- ═══════ CITATION ═══════ -->
         <div class="x-small-header">Citation</div>
-        <div class="bibtex-entry">
-            <div class="line"><span class="value">@article{xing2026hivg,</span></div>
-            <div class="line"><span class="key">title={</span><span class="value">Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling},</span></div>
-            <div class="line"><span class="key">author={</span><span class="value">Xing, Ximing and Xue, Ziteng and Li, Zhenxi and Liang, Weicong and Wang, Linqing and Yang, Zhantao and Hang, Tiankai and Yin, Zijin and Lu, Qinglin and Wang, Chunyu and Yu, Qian},</span></div>
-            <div class="line"><span class="key">journal={</span><span class="value">arXiv preprint},</span></div>
-            <div class="line"><span class="key">year={</span><span class="value">2026}</span></div>
-            <div class="line">}</div>
+        <div class="bibtex-wrap">
+            <button class="bibtex-copy" onclick="copyBibtex(this)" title="Copy to clipboard">Copy</button>
+            <pre class="bibtex-entry" id="bibtex-text">
+@article{xing2026hivg,
+title={Hierarchical SVG Tokenization: Learning Compact Visual Programs for Scalable Vector Graphics Modeling},
+author={Xing, Ximing and Xue, Ziteng and Li, Zhenxi and Liang, Weicong and Wang, Linqing and Yang, Zhantao and Hang, Tiankai and Yin, Zijin and Lu, Qinglin and Wang, Chunyu and Yu, Qian},
+journal={arXiv preprint arXiv:2604.05072},
+year={2026},
+}
+        </pre>
         </div>
+        <script>
+        function copyBibtex(btn) {
+            var text = document.getElementById('bibtex-text').textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                btn.textContent = 'Copied!';
+                setTimeout(function(){ btn.textContent = 'Copy'; }, 2000);
+            });
+        }
+        </script>
 
         <div style="height: 100px;"></div>
     </div>
